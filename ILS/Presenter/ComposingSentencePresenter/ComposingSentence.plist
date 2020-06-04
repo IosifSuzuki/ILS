@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ok</key>
+	<string>OK</string>
+	<key>title</key>
+	<string>Складання слів</string>
+	<key>alertTitle</key>
+	<string>Завершено</string>
+	<key>alertDescription</key>
+	<string>Ви завершили завдання з кількістю балів %ld</string>
+</dict>
+</plist>

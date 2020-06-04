@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>errorCredentials</key>
+	<string>Не правельно введено пароль або email</string>
+	<key>errorAuthorization</key>
+	<string>Помилка авторизації</string>
+	<key>ok</key>
+	<string>OK</string>
+	<key>yes</key>
+	<string>Так</string>
+	<key>no</key>
+	<string>Ні</string>
+</dict>
+</plist>

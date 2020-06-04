@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>back</key>
+	<string>Назад</string>
+	<key>photoLibrarySource</key>
+	<string>Галерея</string>
+	<key>cameraSource</key>
+	<string>Камера</string>
+	<key>optionMessage</key>
+	<string>Виберіть опцію</string>
+	<key>title</key>
+	<string>Розпізнавання фотографії</string>
+</dict>
+</plist>

@@ -1,0 +1,147 @@
+{
+    "rectCountry": [
+        {
+            "latitude": 48.25,
+            "longitude": 22.08
+        },
+        {
+            "latitude": 52.22,
+            "longitude": 33.11
+        },
+        {
+            "latitude": 49.15,
+            "longitude": 40.13
+        },
+        {
+            "latitude": 44.23,
+            "longitude": 33.46
+        }
+    ],
+    "regions": [
+        {
+            "name": "Вінницька",
+            "latitude": 49.23,
+            "longitude": 28.48
+        },
+        {
+            "name": "Волинська",
+            "latitude": 50.74,
+            "longitude": 25.32
+        },
+        {
+            "name": "Дніпропетровська",
+            "latitude": 48.46,
+            "longitude": 35.04
+        },
+        {
+            "name": "Донецька",
+            "latitude": 48.00,
+            "longitude": 37.80
+        },
+        {
+            "name": "Житомирська",
+            "latitude": 50.25,
+            "longitude": 28.66
+        },
+        {
+            "name": "Закарпатська",
+            "latitude": 48.62,
+            "longitude": 22.28
+        },
+        {
+            "name": "Запорізька",
+            "latitude": 47.83,
+            "longitude": 35.13
+        },
+        {
+            "name": "Івано-Франківська",
+            "latitude": 48.92,
+            "longitude": 24.71
+        },
+        {
+            "name": "Київська",
+            "latitude": 50.44,
+            "longitude": 30.52
+        },
+        {
+            "name": "Кіровоградська",
+            "latitude": 48.50,
+            "longitude": 32.26
+        },
+        {
+            "name": "Луганська",
+            "latitude": 48.56,
+            "longitude": 39.30
+        },
+        {
+            "name": "Львівська",
+            "latitude": 49.84,
+            "longitude": 24.03
+        },
+        {
+            "name": "Миколаївська",
+            "latitude": 46.97,
+            "longitude": 31.99
+        },
+        {
+            "name": "Одеська",
+            "latitude": 46.48,
+            "longitude": 30.73
+        },
+        {
+            "name": "Полтавська",
+            "latitude": 49.58,
+            "longitude": 34.55
+        },
+        {
+            "name": "Рівненська",
+            "latitude": 50.61,
+            "longitude": 26.25
+        },
+        {
+            "name": "Сумська",
+            "latitude": 50.91,
+            "longitude": 34.79
+        },
+        {
+            "name": "Тернопільска",
+            "latitude": 49.55,
+            "longitude": 25.59
+        },
+        {
+            "name": "Харківська",
+            "latitude": 49.98,
+            "longitude": 36.26
+        },
+        {
+            "name":  "Херсонська",
+            "latitude": 46.63,
+            "longitude": 32.61
+        },
+        {
+            "name": "Хмельницька",
+            "latitude": 49.42,
+            "longitude": 26.98
+        },
+        {
+            "name": "Черказька",
+            "latitude": 49.44,
+            "longitude": 32.06
+        },
+        {
+            "name": "Чернівецька",
+            "latitude": 48.29,
+            "longitude": 25.93
+        },
+        {
+            "name": "Чернігівська",
+            "latitude": 51.49,
+            "longitude": 31.29
+        },
+        {
+            "name": "АР Крим",
+            "latitude": 44.95,
+            "longitude": 34.10
+        }
+    ]
+}

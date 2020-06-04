@@ -1,0 +1,6 @@
+framework module Pods_ILS {
+  umbrella header "Pods-ILS-umbrella.h"
+
+  export *
+  module * { export * }
+}

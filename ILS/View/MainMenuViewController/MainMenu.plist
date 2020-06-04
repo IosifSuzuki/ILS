@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>no</key>
+	<string>Ні</string>
+	<key>yes</key>
+	<string>Так</string>
+	<key>alertMessage</key>
+	<string>Ви хочете вийти з цього профілю?</string>
+	<key>alertTitle</key>
+	<string>Увага</string>
+</dict>
+</plist>

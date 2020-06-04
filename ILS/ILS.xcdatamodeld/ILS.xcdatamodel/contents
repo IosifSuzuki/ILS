@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Article" representedClassName="Article" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="StatisticWord" representedClassName="StatisticWord" syncable="YES">
+        <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="xNegative" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="xPositive" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="word" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Word" inverseName="statisticWords" inverseEntity="Word"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="balls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="day1agoBalls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="day2agoBalls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="day3agoBalls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="day4agoBalls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
+        <attribute name="lastWorkout" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="nickname" attributeType="String"/>
+        <attribute name="region" attributeType="String" defaultValueString="nil"/>
+        <attribute name="todayBalls" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Word" inverseName="user" inverseEntity="Word"/>
+    </entity>
+    <entity name="Word" representedClassName="Word" syncable="YES">
+        <attribute name="delta" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="soundName" optional="YES" attributeType="String"/>
+        <attribute name="startLearn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="translatedWordText" attributeType="String"/>
+        <attribute name="wordId" attributeType="String"/>
+        <attribute name="wordText" optional="YES" attributeType="String"/>
+        <attribute name="xNegative" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="xPositive" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="statisticWords" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StatisticWord" inverseName="word" inverseEntity="StatisticWord"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="words" inverseEntity="User"/>
+    </entity>
+    <elements>
+        <element name="Article" positionX="373.51953125" positionY="235.5234375" width="128" height="73"/>
+        <element name="User" positionX="372.26953125" positionY="2.265625" width="128" height="223"/>
+        <element name="Word" positionX="175.55078125" positionY="150.01171875" width="128" height="193"/>
+        <element name="StatisticWord" positionX="174.90625" positionY="1.58203125" width="128" height="103"/>
+    </elements>
+</model>
