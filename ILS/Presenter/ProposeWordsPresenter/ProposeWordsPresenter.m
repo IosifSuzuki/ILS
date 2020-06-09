@@ -119,8 +119,8 @@ static NSString *const kProposeWordsPresnterOk = @"ok";
         dispatch_group_enter(group);
         [[FirebaseManager sharedManager] addWord:selectedWord toUserId:self.userModel.userId withCompletionBlock:^(NSArray<StatisticWordModel *> *statisticWordModels) {
             if (selectedWord.translatedWordText) {
-                NSTimeInterval h = [LearningManager hFromIndex:[LearningManager getIndexFromTime:selectedWord.startLearn.timeIntervalSinceReferenceDate]];
-                [[LocalNotificationManager sharedManager] sheduleNotificationThrough:h withMessage:@"Треба пройти треніровку"];
+//                NSTimeInterval h = [LearningManager hFromIndex:[LearningManager getIndexFromTime:selectedWord.startLearn.timeIntervalSinceReferenceDate]];
+//               [[LocalNotificationManager sharedManager] sheduleNotificationThrough:h withMessage:@"Треба пройти треніровку"];
                 [[CoreDataManager sharedManager] saveWordModels:@[selectedWord]];
             }
             dispatch_group_leave(group);

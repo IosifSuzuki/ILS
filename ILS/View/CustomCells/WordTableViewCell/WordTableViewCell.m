@@ -36,7 +36,7 @@
 - (void)setNeedTrain:(BOOL)needTrain {
     _needTrain = needTrain;
     
-    self.infoImageView.hidden = needTrain;
+    self.infoImageView.hidden = !needTrain;
 }
 
 #pragma mark - Private

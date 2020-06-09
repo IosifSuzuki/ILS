@@ -51,7 +51,7 @@
 }
 
 - (UserModel *)userModel {
-    self.user = [[self.persistentContainer.viewContext executeFetchRequest:[User fetchRequest] error:nil] firstObject];
+    self.user = [self fetchUser];
     return [UserModel createUserModel:self.user];
 }
 
@@ -79,7 +79,7 @@
     NSInteger day3agoBalls = self.user.day3agoBalls;
     NSInteger day2agoBalls = self.user.day2agoBalls;
     NSInteger day1agoBalls = self.user.day1agoBalls;
-    NSInteger todayBalls = self.user.todayBalls + balls;
+    NSInteger todayBalls = self.user.todayBalls;
     NSInteger arrBalls[5] = {
         day4agoBalls,
         day3agoBalls,
@@ -89,17 +89,17 @@
     };
     
     for (NSInteger i = 0; i < leftDay; i++) {
-        for (NSInteger j = 4; j > 0; j--) {
-            arrBalls[j] = arrBalls[j - 1];
+        for (NSInteger j = 0; j < 4; j++) {
+            arrBalls[j] = arrBalls[j + 1];
         }
-        arrBalls[0] = 0;
+        arrBalls[4] = 0;
     }
     
     self.user.day4agoBalls = (int32_t)arrBalls[0];
     self.user.day3agoBalls = (int32_t)arrBalls[1];
     self.user.day2agoBalls = (int32_t)arrBalls[2];
     self.user.day1agoBalls = (int32_t)arrBalls[3];
-    self.user.todayBalls = (int32_t)arrBalls[4];
+    self.user.todayBalls = (int32_t)arrBalls[4]  + (int32_t)balls;
     self.user.lastWorkout = todayDate;
     
     [self.persistentContainer.viewContext save:nil];
@@ -146,15 +146,15 @@
         word.startLearn = wordModel.startLearn.timeIntervalSinceReferenceDate;
         word.xPositive = (int32_t)wordModel.xPositive;
         word.xNegative = (int32_t)wordModel.xNegative;
-//        for (StatisticWordModel *statisticWordModel in wordModel.statisticWordModels) {
-//            StatisticWord *statisticWord = [[word.statisticWords.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"level == %d", statisticWordModel.level]] firstObject];
-//            statisticWord.level = (int32_t)statisticWordModel.level;
-//            statisticWord.xNegative = (int32_t)statisticWordModel.negativeX;
-//            statisticWord.xPositive = (int32_t)statisticWordModel.positiveX;
-//        }
+        for (StatisticWordModel *statisticWordModel in wordModel.statisticWordModels) {
+            NSInteger level = statisticWordModel.level;
+            StatisticWord *statisticWord = [[word.statisticWords.allObjects filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"level == %d", level]] firstObject];
+            statisticWord.level = (int32_t)statisticWordModel.level;
+            statisticWord.xNegative = (int32_t)statisticWordModel.negativeX;
+            statisticWord.xPositive = (int32_t)statisticWordModel.positiveX;
+        }
+        [self.persistentContainer.viewContext save:nil];
     }
-    
-    [self.persistentContainer.viewContext save:nil];
 }
 
 - (void)saveWordModels:(NSArray<WordModel *> *)wordModels {
@@ -176,9 +176,8 @@
             [word addStatisticWordsObject:statisticWord];
         }
         [self.user addWordsObject:word];
+        [self.persistentContainer.viewContext save:nil];
     }
-    
-    [self.persistentContainer.viewContext save:nil];
 }
 
 - (NSArray<WordModel *> *)getWordModels {

@@ -9,6 +9,7 @@
 #import "ImaggaAPIManager.h"
 
 #import "WordModel.h"
+#import "StatisticWordModel.h"
 
 static NSString *const API_AUTHORIZATION_KEY = @"YWNjX2M2NTYyNGVkZDg2OWFmOTo2MzQyOTRiZWFmYWRlYjUwZmU1Y2VlMjE4ZWVjZjdlMg==";
 
@@ -75,7 +76,7 @@ static NSString *const API_AUTHORIZATION_KEY = @"YWNjX2M2NTYyNGVkZDg2OWFmOTo2MzQ
             
             for (NSDictionary *wordDictionary in array) {
                 NSDictionary *detailWordDictionary = [wordDictionary objectForKey:@"tag"];
-                [result addObject:[WordModel modelWithIdWord:[detailWordDictionary objectForKey:@"en"] wordText:[detailWordDictionary objectForKey:@"en"] translatedWordText:[detailWordDictionary objectForKey:@"uk"] withSoundName:@"nil" withDelta:[[NSDate date] timeIntervalSinceReferenceDate] withStartLearn:[[NSDate date] timeIntervalSinceReferenceDate] withXPositive:0 withXNegative:0]];
+                [result addObject:[WordModel modelWithIdWord:[detailWordDictionary objectForKey:@"en"] wordText:[detailWordDictionary objectForKey:@"en"] translatedWordText:[detailWordDictionary objectForKey:@"uk"] withSoundName:@"nil" withDelta:[[NSDate date] timeIntervalSinceReferenceDate] withStartLearn:[[NSDate date] timeIntervalSinceReferenceDate] withXPositive:0 withXNegative:0 withStatisticWordModels:[StatisticWordModel getArrayOfNewtatisticWordModelWithWord:[detailWordDictionary objectForKey:@"en"]]]];
             }
             
             completionBlock([result copy]);

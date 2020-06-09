@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>alertMessage</key>
+	<string>Ви завершили треніровку з кількістю балів %ld</string>
+	<key>ok</key>
+	<string>OK</string>
+	<key>title</key>
+	<string>Виберіть відповідь</string>
+	<key>alertErrorTitle</key>
+	<string>Увага</string>
+	<key>alertErrorMessage</key>
+	<string>Вам потрібно принаймі мати в словнику 4 слова щоб можна використовувати цей тип треніровок</string>
+</dict>
+</plist>

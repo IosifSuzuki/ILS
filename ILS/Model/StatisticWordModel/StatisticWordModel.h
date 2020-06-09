@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)createStatisticWordModelWithWord:(NSString *)word level:(NSInteger)level positiveX:(NSInteger)positiveX negativeX:(NSInteger)negativeX;
 + (instancetype)createStatisticWordModelWithDictionary:(NSDictionary *)statisticWordModelDictionary;
 
++ (NSArray<StatisticWordModel *> *)getArrayOfNewtatisticWordModelWithWord:(NSString *)word;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -91,6 +91,10 @@
 		848AC4C5246AE96A00218972 /* WordPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AC4C4246AE96A00218972 /* WordPresenter.m */; };
 		848AC4CA246AEC9D00218972 /* RandomWordApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AC4C9246AEC9D00218972 /* RandomWordApiManager.m */; };
 		848AC4CE246B066A00218972 /* WordsPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848AC4CD246B066A00218972 /* WordsPageViewController.m */; };
+		848ACDD7248CE3B400E561CC /* ChooseAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848ACDD6248CE3B400E561CC /* ChooseAnswerViewController.m */; };
+		848ACDDB248CE4AA00E561CC /* ChooseOptionWordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 848ACDDA248CE4AA00E561CC /* ChooseOptionWordModel.m */; };
+		848ACDDF248CE82600E561CC /* ChooseAnswerPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 848ACDDE248CE82600E561CC /* ChooseAnswerPresenter.m */; };
+		848ACDE1248CE9C300E561CC /* ChooseAnswer.plist in Resources */ = {isa = PBXBuildFile; fileRef = 848ACDE0248CE9C300E561CC /* ChooseAnswer.plist */; };
 		84D039EA245EC3DE00858634 /* SignInPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D039E9245EC3DE00858634 /* SignInPresenter.m */; };
 		84D039EE245EEBDB00858634 /* SignUpPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D039ED245EEBDB00858634 /* SignUpPresenter.m */; };
 		84D039F2245F54F900858634 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D039F1245F54F900858634 /* GoogleService-Info.plist */; };
@@ -248,6 +252,13 @@
 		848AC4C9246AEC9D00218972 /* RandomWordApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomWordApiManager.m; sourceTree = "<group>"; };
 		848AC4CC246B066A00218972 /* WordsPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WordsPageViewController.h; sourceTree = "<group>"; };
 		848AC4CD246B066A00218972 /* WordsPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WordsPageViewController.m; sourceTree = "<group>"; };
+		848ACDD5248CE3B400E561CC /* ChooseAnswerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAnswerViewController.h; sourceTree = "<group>"; };
+		848ACDD6248CE3B400E561CC /* ChooseAnswerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAnswerViewController.m; sourceTree = "<group>"; };
+		848ACDD9248CE4AA00E561CC /* ChooseOptionWordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseOptionWordModel.h; sourceTree = "<group>"; };
+		848ACDDA248CE4AA00E561CC /* ChooseOptionWordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseOptionWordModel.m; sourceTree = "<group>"; };
+		848ACDDD248CE82600E561CC /* ChooseAnswerPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAnswerPresenter.h; sourceTree = "<group>"; };
+		848ACDDE248CE82600E561CC /* ChooseAnswerPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAnswerPresenter.m; sourceTree = "<group>"; };
+		848ACDE0248CE9C300E561CC /* ChooseAnswer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ChooseAnswer.plist; sourceTree = "<group>"; };
 		84D039E8245EC3DE00858634 /* SignInPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignInPresenter.h; sourceTree = "<group>"; };
 		84D039E9245EC3DE00858634 /* SignInPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignInPresenter.m; sourceTree = "<group>"; };
 		84D039EC245EEBDB00858634 /* SignUpPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpPresenter.h; sourceTree = "<group>"; };
@@ -748,6 +759,7 @@
 		8475C35E245D8D14003F1B67 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				848ACDDC248CE80C00E561CC /* ChooseAnswerPresenter */,
 				842B7680248431DB0006AFA8 /* WebPresenter */,
 				842B766A248414E40006AFA8 /* ListOfArticlePresenter */,
 				842B765424824DC30006AFA8 /* MapRatingPresenter */,
@@ -769,6 +781,7 @@
 		8475C35F245D8D1E003F1B67 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				848ACDD8248CE48500E561CC /* ChooseOptionWordModel */,
 				843B71512485406400149A75 /* StatisticWordModel */,
 				842B7670248418C80006AFA8 /* ArticleModel */,
 				842B765E248279E70006AFA8 /* UserInMapModel */,
@@ -784,6 +797,7 @@
 		8475C360245D8D28003F1B67 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				848ACDD4248CE38B00E561CC /* ChooseAnswerViewController */,
 				842B76662484134D0006AFA8 /* ListOfArticleTableViewController */,
 				842B766224840D210006AFA8 /* WebViewController */,
 				842B765024824D410006AFA8 /* MapRatingViewController */,
@@ -916,6 +930,34 @@
 			path = WordsPageViewController;
 			sourceTree = "<group>";
 		};
+		848ACDD4248CE38B00E561CC /* ChooseAnswerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				848ACDD5248CE3B400E561CC /* ChooseAnswerViewController.h */,
+				848ACDD6248CE3B400E561CC /* ChooseAnswerViewController.m */,
+			);
+			path = ChooseAnswerViewController;
+			sourceTree = "<group>";
+		};
+		848ACDD8248CE48500E561CC /* ChooseOptionWordModel */ = {
+			isa = PBXGroup;
+			children = (
+				848ACDD9248CE4AA00E561CC /* ChooseOptionWordModel.h */,
+				848ACDDA248CE4AA00E561CC /* ChooseOptionWordModel.m */,
+			);
+			path = ChooseOptionWordModel;
+			sourceTree = "<group>";
+		};
+		848ACDDC248CE80C00E561CC /* ChooseAnswerPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				848ACDDD248CE82600E561CC /* ChooseAnswerPresenter.h */,
+				848ACDDE248CE82600E561CC /* ChooseAnswerPresenter.m */,
+				848ACDE0248CE9C300E561CC /* ChooseAnswer.plist */,
+			);
+			path = ChooseAnswerPresenter;
+			sourceTree = "<group>";
+		};
 		84D039EB245EEBB900858634 /* SignUpPresenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1018,6 +1060,7 @@
 				84252140246D34D400B98A5F /* LoaderView.xib in Resources */,
 				8402A7F3247947CF0093611A /* Answer.plist in Resources */,
 				842B76492481174E0006AFA8 /* Rating.plist in Resources */,
+				848ACDE1248CE9C300E561CC /* ChooseAnswer.plist in Resources */,
 				842B762F247FA8100006AFA8 /* RecognizeImage.plist in Resources */,
 				84D039F2245F54F900858634 /* GoogleService-Info.plist in Resources */,
 				8402A7E824792DAA0093611A /* Train.plist in Resources */,
@@ -1108,6 +1151,7 @@
 				8475C357245D8CD0003F1B67 /* main.m in Sources */,
 				843B71952488670200149A75 /* User+CoreDataClass.m in Sources */,
 				842B765324824D650006AFA8 /* MapRatingViewController.m in Sources */,
+				848ACDDF248CE82600E561CC /* ChooseAnswerPresenter.m in Sources */,
 				8475C34F245D8CCF003F1B67 /* ILS.xcdatamodeld in Sources */,
 				848AC4BD2469E62200218972 /* MainMenuViewController.m in Sources */,
 				842B7637247FBB2E0006AFA8 /* ProposeWordsPresenter.m in Sources */,
@@ -1120,6 +1164,7 @@
 				84733213247D4BAA00A5CA68 /* ComposingSentencePresenter.m in Sources */,
 				8466E928245DCE360044E8DA /* ILSTextField.m in Sources */,
 				8475C369245D9856003F1B67 /* AppSupportClass.m in Sources */,
+				848ACDDB248CE4AA00E561CC /* ChooseOptionWordModel.m in Sources */,
 				84733219247D4D0B00A5CA68 /* SentenceModel.m in Sources */,
 				84252144246D5F4100B98A5F /* ProfileViewController.m in Sources */,
 				843B71A02488FFB600149A75 /* LocalNotificationManager.m in Sources */,
@@ -1156,6 +1201,7 @@
 				8402A7E624792CBA0093611A /* TrainPresenter.m in Sources */,
 				8475C346245D8CCF003F1B67 /* SceneDelegate.m in Sources */,
 				84D6C918246CA46700C910B5 /* LoaderView.m in Sources */,
+				848ACDD7248CE3B400E561CC /* ChooseAnswerViewController.m in Sources */,
 				8466E92C245E0F530044E8DA /* SignUpViewController.m in Sources */,
 				848AC4CA246AEC9D00218972 /* RandomWordApiManager.m in Sources */,
 				842B764E248136300006AFA8 /* UserTableViewCell.m in Sources */,

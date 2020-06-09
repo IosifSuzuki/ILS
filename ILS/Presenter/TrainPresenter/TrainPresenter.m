@@ -82,6 +82,13 @@ static NSString *const kTrainPresenterDescription = @"alertDescription";
     [self.delegate startAnimation];
     
     dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_enter(group);
+    [[FirebaseManager sharedManager] updateBallsWithId:self.userModel.userId balls:self.balls withCompletionBlock:^(BOOL finished) {
+        [[CoreDataManager sharedManager] addUserBalls:self.balls];
+        dispatch_group_leave(group);
+    }];
+    
     for (WordModel *wordModel in self.dataSource) {
         dispatch_group_enter(group);
         [[FirebaseManager sharedManager] updateWord:wordModel toUserId:self.userModel.userId withCompletionBlock:^{
@@ -134,6 +141,7 @@ static NSString *const kTrainPresenterDescription = @"alertDescription";
     StatisticWordModel *statisticWordModel = [wordModel.statisticWordModels objectAtIndex:[LearningManager getIndexFromTime:wordModel.startLearn.timeIntervalSinceReferenceDate]];
     NSInteger index = -1;
     statisticWordModel.negativeX += 1;
+    wordModel.delta = [NSDate dateWithTimeIntervalSinceReferenceDate:[NSDate timeIntervalSinceReferenceDate]];
     wordModel.xNegative += 1;
     for (NSString *answerWord in answerWords) {
         if ([answerWords containsObject:[word lowercaseString]]) {

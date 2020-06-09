@@ -200,7 +200,6 @@ static NSString *const kSegueLaunchViewControllerIdentifier = @"SegueLaunchViewC
         case SignInViewControllerButtonCompletionTypeILS: {
             typeof(self) weakSelf = self;
             __block BOOL isError = NO;
-            dispatch_group_t group = dispatch_group_create();
             [[LoaderView sharedInstance] startAnimationFromView:self.view];
             
             BOOL rememberMe = NO;
@@ -214,24 +213,40 @@ static NSString *const kSegueLaunchViewControllerIdentifier = @"SegueLaunchViewC
             [[NSUserDefaults standardUserDefaults] setObject:@(rememberMe) forKey:kSignInViewControllerRememberMe];
             [[NSUserDefaults standardUserDefaults] setObject:loginText forKey:kSignInViewControllerLoginText];
             
-            dispatch_group_enter(group);
             [[LoaderView sharedInstance] startAnimationFromView:self.view];
             [[FirebaseManager sharedManager] signInUserWithEmail:self.emailTextField.text password:self.passwordTextField.text completionSuccerBlock:^(BOOL succerfull) {
+                dispatch_group_t group = dispatch_group_create();
+                NSString *userId = [[[CoreDataManager sharedManager] userModel] userId];
+                
+                dispatch_group_enter(group);
+                [[LingvoAPIManager sharedManager] beginAuthenticateService:^(BOOL succerfull) {
+                    isError = !succerfull;
+                    dispatch_group_leave(group);
+                }];
+                
+                dispatch_group_enter(group);
+                [[FirebaseManager sharedManager] getArticlesWithCompletionBlock:^(NSArray<ArticleModel *> *articleModels) {
+                    isError = NO;
+                    [[CoreDataManager sharedManager] saveArticleModels:articleModels];
+                    dispatch_group_leave(group);
+                }];
+                
+                dispatch_group_enter(group);
+                [[FirebaseManager sharedManager] getWordsWithUserId:userId withCompletionBlock:^(NSArray<WordModel *> *wordModels) {
+                    isError = NO;
+                    [[CoreDataManager sharedManager] saveWordModels:wordModels];
+                    dispatch_group_leave(group);
+                }];
+                
+                
+                dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+                    if (!isError) {
+                        [weakSelf performSegueWithIdentifier:kSegueLaunchViewControllerIdentifier sender:nil];
+                    } else {
+                        [weakSelf showAlertWithTitle:self.presenter.errorAuthorization description:self.presenter.errorGredentialsText];
+                    }
+                });
             }];
-            
-            dispatch_group_enter(group);
-            [[LingvoAPIManager sharedManager] beginAuthenticateService:^(BOOL succerfull) {
-                isError = !succerfull;
-                dispatch_group_leave(group);
-            }];
-            
-            dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-                if (!isError) {
-                    [weakSelf performSegueWithIdentifier:kSegueLaunchViewControllerIdentifier sender:nil];
-                } else {
-                    [weakSelf showAlertWithTitle:self.presenter.errorAuthorization description:self.presenter.errorGredentialsText];
-                }
-            });
         }
             break;
         case SignInViewControllerButtonCompletionTypeGoogle: {

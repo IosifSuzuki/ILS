@@ -130,4 +130,47 @@ static const NSString *kAnswerViewFalse = @"false";
     }];
 }
 
+- (void)showAnswerViewFromView:(UIView *)view withAnswers:(NSArray<NSString *> *)answers selectedIndex:(NSInteger)index isCorect:(BOOL)isCorrect completionBlock:(void (^)(void))completionBlock {
+    self.titleLabel.text = isCorrect ? self.trueText : self.falseText;
+    self.completionBlock = completionBlock;
+    [view addSubview:self];
+    CGFloat offsetY = CGRectGetHeight(self.containerView.bounds);
+    self.containerView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) - offsetY);
+    self.alpha = 0.f;
+    for (UIView *view in self.answersStackView.arrangedSubviews) {
+        [view removeFromSuperview];
+    }
+    for (NSString *answer in answers) {
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.text = answer;
+        if ([answers indexOfObject:answer] == index) {
+                titleLabel.textColor = AppSupportClass.acceptColor;
+        } else {
+            titleLabel.textColor = self.notChoiceOptionColor;
+        }
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.numberOfLines = 0;
+        [self.answersStackView addArrangedSubview:titleLabel];
+    }
+    [UIView animateWithDuration:.5f delay:0.f usingSpringWithDamping:1.f initialSpringVelocity:2.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.alpha = 1.f;
+        self.containerView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) + offsetY);
+    } completion:^(BOOL finished) {
+        if (finished) {
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:3.f repeats:NO block:^(NSTimer * _Nonnull timer) {
+                self.timer = nil;
+                [timer invalidate];
+                [UIView animateWithDuration:.5f delay:0.f usingSpringWithDamping:1.f initialSpringVelocity:2.f options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                    self.alpha = 0.f;
+                } completion:^(BOOL finished) {
+                    [self removeFromSuperview];
+                    completionBlock();
+                    self.completionBlock = nil;
+                }];
+            }];
+        }
+    }];
+    
+    
+}
 @end

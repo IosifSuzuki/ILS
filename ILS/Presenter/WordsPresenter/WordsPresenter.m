@@ -99,6 +99,7 @@ static NSString *const kWordsPresenterDescription = @"description";
         dispatch_group_enter(group);
         [[LingvoAPIManager sharedManager] translateWord:word withCompletionBlock:^(WordModel *wordModel) {
             [[FirebaseManager sharedManager] addWord:wordModel toUserId:self.userModel.userId withCompletionBlock:^(NSArray<StatisticWordModel *> *statisticWordModels) {
+                wordModel.statisticWordModels = statisticWordModels;
                 if (wordModel.translatedWordText) {
                     //NSTimeInterval h = [LearningManager hFromIndex:[LearningManager getIndexFromTime:wordModel.startLearn.timeIntervalSinceReferenceDate]];
                     [[LocalNotificationManager sharedManager] sheduleNotificationThrough:5 withMessage:@"Треба пройти треніровку"];

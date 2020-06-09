@@ -250,12 +250,10 @@
                     dispatch_group_enter(group);
                     [[[self.databaseRef child:@"statisticWords"] childByAutoId] setValue:statisticWordModelDicrionary withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
                         dispatch_group_leave(group);
-                        if (index == LearningManager.levels - 1) {
-                            dispatch_group_leave(group);
-                        }
                     }];
                 }
             }
+            dispatch_group_leave(group);
         }];
         
         dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -353,10 +351,45 @@
 
 - (void)updateBallsWithId:(NSString *)userId balls:(NSInteger)balls withCompletionBlock:(void (^)(BOOL))completionBlock {
     [[[self.databaseRef child:@"users"] child:userId] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        
         NSMutableDictionary *userDictionary = [NSMutableDictionary dictionaryWithDictionary:[self normalizationUserData:snapshot.value]];
-        [userDictionary setValue:@([[userDictionary objectForKey:@"todayBalls"] integerValue] + balls) forKey:@"todayBalls"];
+        
+        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[[userDictionary objectForKey:@"lastWorkout"] doubleValue]];
+        NSDate *todayDate = [NSDate date];
+        NSInteger curentDay = [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:todayDate];
+        NSInteger lastWorkoutDay = [[NSCalendar currentCalendar] component:NSCalendarUnitDay fromDate:date];
+        
+        NSInteger leftDay = curentDay - lastWorkoutDay;
+        
+        NSInteger day4agoBalls = [[userDictionary objectForKey:@"day4agoBalls"] integerValue];
+        NSInteger day3agoBalls = [[userDictionary objectForKey:@"day3agoBalls"] integerValue];
+        NSInteger day2agoBalls = [[userDictionary objectForKey:@"day2agoBalls"] integerValue];
+        NSInteger day1agoBalls = [[userDictionary objectForKey:@"day1agoBalls"] integerValue];
+        NSInteger todayBalls = [[userDictionary objectForKey:@"todayBalls"] integerValue];
+        NSInteger arrBalls[5] = {
+            day4agoBalls,
+            day3agoBalls,
+            day2agoBalls,
+            day1agoBalls,
+            todayBalls,
+        };
+        
+        for (NSInteger i = 0; i < leftDay; i++) {
+            for (NSInteger j = 0; j < 4; j++) {
+                arrBalls[j] = arrBalls[j + 1];
+            }
+            arrBalls[4] = 0;
+        }
+
+        [userDictionary setValue:@(arrBalls[4] + balls) forKey:@"todayBalls"];
+        [userDictionary setValue:@(arrBalls[3]) forKey:@"day1agoBalls"];
+        [userDictionary setValue:@(arrBalls[2]) forKey:@"day2agoBalls"];
+        [userDictionary setValue:@(arrBalls[1]) forKey:@"day3agoBalls"];
+        [userDictionary setValue:@(arrBalls[0]) forKey:@"day4agoBalls"];
+        
         [userDictionary setValue:@([[userDictionary objectForKey:@"balls"] integerValue] + balls) forKey:@"balls"];
         [userDictionary setValue:@([[NSDate date] timeIntervalSinceReferenceDate]) forKey:@"lastWorkout"];
+        
         [[[self.databaseRef child:@"users"] child:userId] setValue:[userDictionary copy] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
             completionBlock(YES);
         }];

@@ -15,6 +15,7 @@
 #import "RecognizeImageViewController.h"
 #import "RatingViewController.h"
 #import "ListOfArticleTableViewController.h"
+#import "ChooseAnswerViewController.h"
 
 #import "WordsPageViewController.h"
 
@@ -41,6 +42,7 @@ typedef NS_ENUM(NSUInteger, MainMenuViewControllerMenuItem) {
     MainMenuViewControllerMenuItemRating,
     MainMenuViewControllerMenuItemSearchWordOnCamera,
     MainMenuViewControllerMenuItemComposingSentence,
+    MainMenuViewControllerMenuItemChooseAnswer,
     MainMenuViewControllerMenuItemLogout,
 };
 
@@ -166,6 +168,10 @@ typedef NS_ENUM(NSUInteger, MainMenuViewControllerMenuItem) {
                 break;
             case MainMenuViewControllerMenuItemSearchWordOnCamera: {
                 viewController = [self getViewControllerForClass:[RecognizeImageViewController class]];
+            }
+                break;
+            case MainMenuViewControllerMenuItemChooseAnswer: {
+                viewController = [self getViewControllerForClass:[ChooseAnswerViewController class]];
             }
                 break;
             case MainMenuViewControllerMenuItemLogout: {

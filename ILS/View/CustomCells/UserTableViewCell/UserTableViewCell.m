@@ -35,6 +35,12 @@
     [self setupView];
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    
+    self.iconImage.image = [UIImage imageNamed:@"person"];
+}
+
 #pragma mark - Accessor
 
 

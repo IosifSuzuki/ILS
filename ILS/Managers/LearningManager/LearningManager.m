@@ -95,7 +95,8 @@
     NSTimeInterval hTimeInterval = [LearningManager hFromIndex:index];
     double positiveX = statisticWordModel.positiveX != 0 ? statisticWordModel.positiveX : 1;
     double negativeX = statisticWordModel.negativeX != 0 ? statisticWordModel.negativeX : 1;
-    return [LearningManager pFromDelta:deltaTimeInterval h:hTimeInterval] * (positiveX / (positiveX + negativeX) + 0.5);
+    double p = [LearningManager pFromDelta:deltaTimeInterval h:hTimeInterval];
+    return p * (positiveX / (positiveX + negativeX) + 0.5);
 }
 
 @end

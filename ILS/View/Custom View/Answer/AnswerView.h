@@ -20,6 +20,7 @@ typedef NS_ENUM(NSUInteger, AnswerViewMode) {
 @property (assign, nonatomic) AnswerViewMode answerViewMode;
 
 - (void)showAnswerViewFromView:(UIView *)view withAnswers:(NSArray<NSString *> *)answers indexRight:(NSInteger)index completionBlock:(nullable void (^)(void))completionBlock;
+- (void)showAnswerViewFromView:(UIView *)view withAnswers:(NSArray<NSString *> *)answers selectedIndex:(NSInteger)index isCorect:(BOOL)isCorrect completionBlock:(void (^)(void))completionBlock;
 
 @end
 
